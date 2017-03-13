@@ -57,7 +57,7 @@ class SignUp extends React.Component {
 }
 
 SignUp.propTypes = {
-userStore: React.PropTypes.object
+  userStore: React.PropTypes.object
 };
 
 export default inject("userStore")(observer(SignUp));

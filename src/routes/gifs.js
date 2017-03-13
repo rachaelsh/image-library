@@ -26,7 +26,8 @@ router.route('/gifs')
     });
   })
   .get(function(req, res, next){
-    Gif.find(function(err, gifs){
+    // CHANGE TO POPULATE BY the user id, instead of name
+    Gif.find().populate('owner').exec(function(err, gifs) {
       if(err){
         return next(err);
       } else {

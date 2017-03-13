@@ -21,6 +21,11 @@ export default class UserStore {
     this._id = "";
   }
 
+  // ADD HANDLING FOR USER SIGN UP ERROR WHEN DUPLICATING A NAME
+  // YOU CAN SEND ERRORS IN THE result
+  // (extra credit - figure out how to change your route to make
+  // an error instead, and catch the error in the promise handing
+  // below instead)
   saveNewUser(user){
     fetch('/newuser', {
       method: 'POST',
@@ -32,7 +37,14 @@ export default class UserStore {
         name: user.name,
         password: user.password
       })
-    }).then(result => result.json()).then(res => {this.username = res.name;});
+    }).then(result => result.json()).then(res => {
+      // POSSIBLE ERROR HANDLING CODE
+      // if (res.name === "") {
+        //
+      //}
+      // HAROLD DOESN"T THINK BELOW IS NECESSARY
+      this.username = res.name;
+    });
   }
 
   authenticateUser(user) {

@@ -22,6 +22,7 @@
     "mocha": true
   },
   "rules": {
+    "indent": ["error", 2],
     "quotes": 0,
     "no-console": 1,
     "no-debugger": 1,

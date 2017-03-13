@@ -15,7 +15,8 @@ class ImageComponent extends React.Component {
    }
 
    handleAddNewImageToLibrary(e){
-     this.props.imageStore.saveToLibrary(this.props.imageinfo, this.props.userStore._id);
+     this.props.imageStore.saveToLibrary(
+       this.props.imageinfo, this.props.userStore._id);
      this.props.imageStore.removeFromSearchResults(this.props.imageinfo);
    }
 
@@ -25,9 +26,18 @@ class ImageComponent extends React.Component {
 
    prepareImageButtons(){
      if(this.props.userStore.isloggedin && this.props.typeofdisplay == "searchresults"){
-       return (<Button onClick={this.handleAddNewImageToLibrary} bsStyle="success" block><Glyphicon glyph="plus-sign"/>   Add To Library</Button>);
-     }else if((this.props.userStore.isadmin || this.props.imageinfo.owner == this.props.userStore._id) && this.props.typeofdisplay == "library"){
-      return (<Button onClick={this.handleRemoveImageFromLibrary} bsStyle="danger" block><Glyphicon glyph="remove-circle"/>   Delete</Button>);
+      return (
+        <Button onClick={this.handleAddNewImageToLibrary} bsStyle="success" block>
+          <Glyphicon glyph="plus-sign"/>
+          Add To Library
+        </Button>
+      );
+    } else if((this.props.userStore.isadmin || (this.props.imageinfo && this.props.imageinfo.owner._id == this.props.userStore._id)) && this.props.typeofdisplay == "library"){
+      return (
+        <Button onClick={this.handleRemoveImageFromLibrary} bsStyle="danger" block>
+          <Glyphicon glyph="remove-circle"/>
+          Delete
+        </Button>);
      }else{
         return "";
      }
@@ -36,14 +46,16 @@ class ImageComponent extends React.Component {
    render() {
      let imageButtons = this.prepareImageButtons();
      const imageWellStyle = {maxWidth: 300, margin: '0px', padding:'0px'};
+     let addedby = (this.props.imageinfo && this.props.imageinfo.owner) ?
+       "added by " + this.props.imageinfo.owner.name : "";
 
      return (
        <div className="text-center col-lg-3 col-md-4 col-sm-6">
-       <div className="well" style={imageWellStyle}>
-         <Image height="300" width="300" src={this.props.imageinfo.url} rounded />
-         {imageButtons}
-       </div>
-       <br/>
+         <div className="well" style={imageWellStyle}>
+           <Image height="300" width="300" src={this.props.imageinfo.url} rounded />
+             {addedby} {imageButtons}
+         </div>
+         <br/>
       </div>
      );
    }
