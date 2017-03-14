@@ -4,28 +4,28 @@ import ImageComponent from './ImageComponent';
 
 class Library extends React.Component {
 
-   constructor() {
-     super();
-     this.state = {};
-     this.prepareImages = this.prepareImages.bind(this);
-   }
+  constructor() {
+    super();
+    this.state = {};
+    this.prepareImages = this.prepareImages.bind(this);
+  }
 
-   prepareImages() {
-   return this.props.imageStore.library.map(function(img) {
-       return(<ImageComponent
+  prepareImages() {
+    return this.props.imageStore.library.map(function(img) {
+      return(<ImageComponent
               key={img._id}
               imageinfo={img}
               typeofdisplay="library"/>);
-     }, this);
-   }
-   render() {
+    }, this);
+  }
+  render() {
 
-     return (
-       <div className="col-md-12">
+    return (
+      <div className="col-md-12">
         {this.prepareImages()}
-       </div>
-     );
-   }
+      </div>
+    );
+  }
 }
 
 Library.propTypes = {

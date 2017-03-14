@@ -48,7 +48,7 @@ export default class UserStore {
   }
 
   authenticateUser(user) {
-    // console.log(name + " " + password);
+    // console.log(user.name + " " + user.password);
     fetch('/authenticate', {
       method: 'POST',
       headers: {

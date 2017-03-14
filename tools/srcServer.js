@@ -69,7 +69,7 @@ app.post('/newuser', function(req, res) {
   });
 });
 
-app.post('/authenticate', function(req, res) {
+app.post('/authenticate', function(req, res){
   // find the user
   User.findOne({
     name: req.body.name
@@ -109,7 +109,7 @@ app.post('/authenticate', function(req, res) {
   });
 });
 
-// TODO: route middleware to verify a token
+// : route middleware to verify a token
 app.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token

@@ -6,26 +6,26 @@ import { inject, observer} from 'mobx-react';
 
 class ImageComponent extends React.Component {
 
-   constructor() {
-     super();
+  constructor() {
+    super();
 
-     this.handleAddNewImageToLibrary = this.handleAddNewImageToLibrary.bind(this);
-     this.prepareImageButtons = this.prepareImageButtons.bind(this);
-     this.handleRemoveImageFromLibrary = this.handleRemoveImageFromLibrary.bind(this);
-   }
+    this.handleAddNewImageToLibrary = this.handleAddNewImageToLibrary.bind(this);
+    this.prepareImageButtons = this.prepareImageButtons.bind(this);
+    this.handleRemoveImageFromLibrary = this.handleRemoveImageFromLibrary.bind(this);
+  }
 
-   handleAddNewImageToLibrary(e){
-     this.props.imageStore.saveToLibrary(
-       this.props.imageinfo, this.props.userStore._id);
-     this.props.imageStore.removeFromSearchResults(this.props.imageinfo);
-   }
+  handleAddNewImageToLibrary(e){
+    this.props.imageStore.saveToLibrary(
+      this.props.imageinfo, this.props.userStore._id);
+    this.props.imageStore.removeFromSearchResults(this.props.imageinfo);
+  }
 
-   handleRemoveImageFromLibrary(e){
-     this.props.imageStore.removeFromLibrary(this.props.imageinfo);
-   }
+  handleRemoveImageFromLibrary(e){
+    this.props.imageStore.removeFromLibrary(this.props.imageinfo);
+  }
 
-   prepareImageButtons(){
-     if(this.props.userStore.isloggedin && this.props.typeofdisplay == "searchresults"){
+  prepareImageButtons(){
+    if(this.props.userStore.isloggedin && this.props.typeofdisplay == "searchresults"){
       return (
         <Button onClick={this.handleAddNewImageToLibrary} bsStyle="success" block>
           <Glyphicon glyph="plus-sign"/>
@@ -38,27 +38,27 @@ class ImageComponent extends React.Component {
           <Glyphicon glyph="remove-circle"/>
           Delete
         </Button>);
-     }else{
-        return "";
-     }
-   }
+    }else{
+      return "";
+    }
+  }
 
-   render() {
-     let imageButtons = this.prepareImageButtons();
-     const imageWellStyle = {maxWidth: 300, margin: '0px', padding:'0px'};
-     let addedby = (this.props.imageinfo && this.props.imageinfo.owner) ?
+  render() {
+    let imageButtons = this.prepareImageButtons();
+    const imageWellStyle = {maxWidth: 300, margin: '0px', padding:'0px'};
+    let addedby = (this.props.imageinfo && this.props.imageinfo.owner) ?
        "added by " + this.props.imageinfo.owner.name : "";
 
-     return (
-       <div className="text-center col-lg-3 col-md-4 col-sm-6">
-         <div className="well" style={imageWellStyle}>
-           <Image height="300" width="300" src={this.props.imageinfo.url} rounded />
-             {addedby} {imageButtons}
-         </div>
-         <br/>
+    return (
+      <div className="text-center col-lg-3 col-md-4 col-sm-6">
+        <div className="well" style={imageWellStyle}>
+          <Image height="300" width="300" src={this.props.imageinfo.url} rounded />
+            {addedby} {imageButtons}
+        </div>
+        <br/>
       </div>
-     );
-   }
+    );
+  }
 }
 
 ImageComponent.propTypes = {

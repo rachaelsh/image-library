@@ -3,19 +3,19 @@ import {observer , inject} from 'mobx-react';
 
 class LogOut extends React.Component {
 
-   constructor() {
-     super();
-     this.state = {};
-   }
+  constructor() {
+    super();
+    this.state = {};
+  }
 
-   render() {
+  render() {
 
-     return (
-       <div className="col-md-12 well">
+    return (
+      <div className="col-md-12 well">
         You are now logged out.
-       </div>
-     );
-   }
+      </div>
+    );
+  }
 }
 
 LogOut.propTypes = {

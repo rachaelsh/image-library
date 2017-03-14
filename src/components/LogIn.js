@@ -55,7 +55,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-userStore: React.PropTypes.object
+  userStore: React.PropTypes.object
 };
 
 export default inject("userStore")(observer(Login));

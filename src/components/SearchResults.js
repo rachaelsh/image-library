@@ -4,28 +4,28 @@ import ImageComponent from './ImageComponent';
 
 class SearchResults extends React.Component {
 
-   constructor() {
-     super();
-     this.state = {};
-     this.prepareImages = this.prepareImages.bind(this);
-   }
+  constructor() {
+    super();
+    this.state = {};
+    this.prepareImages = this.prepareImages.bind(this);
+  }
 
-   prepareImages() {
-   return this.props.imageStore.searchresults.map(function(img) {
-       return(<ImageComponent
+  prepareImages() {
+    return this.props.imageStore.searchresults.map(function(img) {
+      return(<ImageComponent
               key={img.name}
               imageinfo={img}
               typeofdisplay="searchresults"/>);
-     }, this);
-   }
-   render() {
+    }, this);
+  }
+  render() {
 
-     return (
-       <div className="col-md-12">
+    return (
+      <div className="col-md-12">
         {this.prepareImages()}
-       </div>
-     );
-   }
+      </div>
+    );
+  }
 }
 
 SearchResults.propTypes = {

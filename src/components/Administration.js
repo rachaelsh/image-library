@@ -4,38 +4,38 @@ import {Jumbotron, Well} from 'react-bootstrap';
 
 class Administration extends React.Component {
 
-   constructor() {
-     super();
-     this.state = {};
+  constructor() {
+    super();
+    this.state = {};
 
-     this.createAdministrationComponenet = this.createAdministrationComponenet.bind(this);
-   }
+    this.createAdministrationComponenet = this.createAdministrationComponenet.bind(this);
+  }
 
-   createAdministrationComponenet(){
-     if(this.props.userStore.isloggedin){
-       return(
-         <Well>
-         <h1>Administration </h1>
-         </Well>
-       );
-     }else{
-       return(
-         <Well>
-         <h1>Administration</h1>
-         </Well>
-       );
-     }
-   }
+  createAdministrationComponenet(){
+    if(this.props.userStore.isloggedin){
+      return(
+        <Well>
+        <h1>Administration </h1>
+        </Well>
+      );
+    }else{
+      return(
+        <Well>
+        <h1>Administration</h1>
+        </Well>
+      );
+    }
+  }
 
-   render() {
-     let welcomeComponent = this.createAdministrationComponenet();
+  render() {
+    let welcomeComponent = this.createAdministrationComponenet();
 
-     return (
-       <Jumbotron className="col-md-12">
+    return (
+      <Jumbotron className="col-md-12">
         {welcomeComponent}
-       </Jumbotron>
+      </Jumbotron>
      );
-   }
+  }
 }
 
 Administration.propTypes = {
